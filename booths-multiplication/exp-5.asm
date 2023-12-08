@@ -1,0 +1,35 @@
+LDA 2050H
+MOV B,A
+MVI C,00H
+LDA 2051H
+MVI H,00H
+MOV L,A
+MVI D,08H
+label5: ANI 01H
+MOV E,A
+MOV A,H
+ANI 80H
+ORA E
+JPO label1
+JMP label2
+label1: JP label3
+DAD B
+JMP label2
+label3: MOV A,H
+SUB B
+MOV H,A
+label2: MOV A,L
+ANI 01H
+STC
+JPO label4
+CMC
+label4: MOV A,H
+RAR
+MOV H,A
+MOV A,L
+RAR
+MOV L,A
+DCR D
+JNZ label5
+SHLD 2052H
+HLT
