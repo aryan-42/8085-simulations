@@ -1,0 +1,18 @@
+;EXCHANGE CONTENTS OF 9000H & 9050H
+;using direct addressing
+LDA 9000H
+MOV C,A
+LDA 9050H
+STA 9000H
+MOV A,C
+STA 9050H
+
+;using indirect addressing
+LXI H,9000H
+LXI D,9050H
+MOV C,M
+LDAX D
+MOV M,A
+MOV A,C
+STAX D
+HLT
